@@ -34,17 +34,17 @@ module.exports = function (sequelize, DataTypes) {
         function () {
 
         }]
-//    },
-//    classMethods: {
-//      associate: function (models) {
-////        console.log(models);
-//        return this.hasMany(models.Track, {
-////          through: 'Track_Artist'
-//          as: ['performs'],
-//          through: ['Track_Artist'],
-//          foreignKey: 'Artist_id'
-//        });
-//      }
+    },
+    classMethods: {
+      associate: function (models) {
+//        console.log(models);
+        return this.belongsToMany(models.Track, {
+//          through: 'Track_Artist'
+          as: 'performs',
+          through: 'Track_Artist',
+          foreignKey: 'Artist_id'
+        });
+      }
     }
   });
   return Artist;

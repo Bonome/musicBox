@@ -38,22 +38,22 @@ module.exports = function (sequelize, DataTypes) {
     }
   }, {
     underscored: true,
-    paranoid: true,
+    paranoid: true, 
     hooks: {
       beforeValidate: [
         function () {
 
         }]
-//    },
-//    classMethods: {
-//      associate: function (models) {
-//        return this.belongsToMany(models.Artist, {
-////          through: 'Track_Artist'
-//          as: ['performedBy'],
-//          through: ['Track_Artist'], 
-//          foreignKey: 'Track_id'
-//        });
-//      }
+    }, 
+    classMethods: {
+      associate: function (models) {
+        return this.belongsToMany(models.Artist, {
+//          through: 'Track_Artist'
+          as: 'performedBy',
+          through: 'Track_Artist', 
+          foreignKey: 'Track_id'
+        });
+      }
     }
   });
   return Track;
