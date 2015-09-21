@@ -1,9 +1,7 @@
 "use strict";
 
-var modelTrack = require("../models/track");
-
 module.exports = function (sequelize, DataTypes) {
-  var Artist = sequelize.define("Artist", {
+  var Track = sequelize.define("Track", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,17 +12,29 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       unique: true
     },
-    biography: {
-      type: DataTypes.TEXT
+    released: {
+      type: DataTypes.STRING
     },
-    nationality: {
+    path: {
       type: DataTypes.STRING
     },
     label: {
       type: DataTypes.STRING
     },
-    actives_years: {
+    length: {
       type: DataTypes.STRING
+    },
+    writer: {
+      type: DataTypes.STRING
+    },
+    composer: {
+      type: DataTypes.STRING
+    },
+    read_counter: {
+      type: DataTypes.INTEGER
+    },
+    last_read_at: {
+      type: DataTypes.DATE
     }
   }, {
     underscored: true,
@@ -37,15 +47,14 @@ module.exports = function (sequelize, DataTypes) {
 //    },
 //    classMethods: {
 //      associate: function (models) {
-////        console.log(models);
-//        return this.hasMany(models.Track, {
+//        return this.belongsToMany(models.Artist, {
 ////          through: 'Track_Artist'
-//          as: ['performs'],
-//          through: ['Track_Artist'],
-//          foreignKey: 'Artist_id'
+//          as: ['performedBy'],
+//          through: ['Track_Artist'], 
+//          foreignKey: 'Track_id'
 //        });
 //      }
     }
   });
-  return Artist;
+  return Track;
 };

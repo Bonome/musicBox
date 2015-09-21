@@ -2,11 +2,11 @@
 
 var express = require('express');
 var router = express.Router();
-var controller = require('../controllers/album');
+var controller = require('../controllers/genre');
 
 router.get('/', controller.list);
 
-router.post('/', controller.create);
+router.post('/', controller.save);
 
 router.put('/', controller.update);
 

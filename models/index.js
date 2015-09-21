@@ -22,6 +22,18 @@ Object.keys(db).forEach(function (modelName) {
     }
 });
 
+//db.Track.belongsToMany( db.Artist, {
+//    as: ['performedBy'],
+//    through: ['Track_Artist'], //this can be string or a model,
+//    foreignKey: 'Track_id'
+//});
+//
+//db.Artist.belongsToMany(db.Track, {
+//    as: ['performs'],
+//    through: ['Track_Artist'],
+//    foreignKey: 'Artist_id'
+//});
+//console.log(db);
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
