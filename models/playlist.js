@@ -1,8 +1,7 @@
 "use strict";
 
-
 module.exports = function (sequelize, DataTypes) {
-  var Album = sequelize.define("Album", {
+  var Playlist = sequelize.define("Playlist", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -10,13 +9,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    release: {
-      type: DataTypes.STRING
-    },
-    label: {
-      type: DataTypes.STRING
+      allowNull: false,
+      unique: true
     }
   }, {
     underscored: true,
@@ -30,13 +24,13 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       associate: function (models) {
         this.belongsToMany(models.Track, {
-          as: 'released_with',
-          through: 'Track_Albums',
-          foreignKey: 'album_id'
+          as: 'contain',
+          through: 'Track_Playlists',
+          foreignKey: 'playlist_id'
         });
         return this;
       }
     }
   });
-  return Album;
+  return Playlist;
 };

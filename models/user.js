@@ -2,8 +2,6 @@
 
 var bcrypt = require('bcrypt-nodejs');
 var validator = require('validator');
-//var modelArtist = require("../models/artist");
-
 
 module.exports = function (sequelize, DataTypes) {
   var beforeSave = function (user, options, callback) {
@@ -62,6 +60,20 @@ module.exports = function (sequelize, DataTypes) {
       beforeUpdate: [
         beforeSave
       ]
+    },classMethods: {
+      associate: function (models) {
+        this.belongsToMany(models.Track, {
+          as: 'scores_track',
+          through: 'User_Tracks', 
+          foreignKey: 'user_id'
+        });
+        this.belongsToMany(models.Artist, {
+          as: 'scores_artist',
+          through: 'User_Artists', 
+          foreignKey: 'user_id'
+        });
+        return this;
+      }
     },
     instanceMethods: {
       verifyPassword: function (password, cb) {

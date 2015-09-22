@@ -1,7 +1,5 @@
 "use strict";
 
-var modelTrack = require("../models/track");
-
 module.exports = function (sequelize, DataTypes) {
   var Artist = sequelize.define("Artist", {
     id: {
@@ -37,13 +35,36 @@ module.exports = function (sequelize, DataTypes) {
     },
     classMethods: {
       associate: function (models) {
-//        console.log(models);
-        return this.belongsToMany(models.Track, {
-//          through: 'Track_Artist'
+        this.belongsToMany(models.Track, {
           as: 'performs',
-          through: 'Track_Artist',
-          foreignKey: 'Artist_id'
+          through: 'Track_Artists',
+          foreignKey: 'artist_id'
         });
+        this.belongsToMany(models.Genre, {
+          as: 'plays',
+          through: 'Artist_Genres',
+          foreignKey: 'artist_id'
+        });
+        this.belongsToMany(models.Artist, {
+          as: 'influence_by',
+          through: 'Artist_Influence_Artists',
+          foreignKey: 'artist_id'
+        });
+        this.belongsToMany(models.Artist, {
+          as: 'similaire_to',
+          through: 'Artist_Similaire_Artists',
+          foreignKey: 'artist_id'
+        });
+        this.belongsToMany(models.User, {
+          as: 'artist_scored',
+          through: 'User_Artists', 
+          foreignKey: 'artist_id'
+        });
+        this.hasMany(models.Album, {
+          as: 'released',
+          foreignKey: 'artist_id'
+        });
+        return this;
       }
     }
   });

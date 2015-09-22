@@ -47,12 +47,32 @@ module.exports = function (sequelize, DataTypes) {
     }, 
     classMethods: {
       associate: function (models) {
-        return this.belongsToMany(models.Artist, {
-//          through: 'Track_Artist'
-          as: 'performedBy',
-          through: 'Track_Artist', 
-          foreignKey: 'Track_id'
+        this.belongsToMany(models.Artist, {
+          as: 'performed_by',
+          through: 'Track_Artists', 
+          foreignKey: 'track_id'
         });
+        this.belongsToMany(models.Album, {
+          as: 'released_on',
+          through: 'Track_Albums', 
+          foreignKey: 'track_id'
+        });
+        this.belongsToMany(models.Genre, {
+          as: 'is_genre_of',
+          through: 'Track_Genres', 
+          foreignKey: 'track_id'
+        });
+        this.belongsToMany(models.Playlist, {
+          as: 'compose',
+          through: 'Track_Playlists', 
+          foreignKey: 'track_id'
+        });
+        this.belongsToMany(models.User, {
+          as: 'track_scored',
+          through: 'User_Tracks', 
+          foreignKey: 'track_id'
+        });
+        return this;
       }
     }
   });
