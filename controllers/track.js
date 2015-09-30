@@ -8,7 +8,7 @@ exports.list = function (req, res) {
 };
 
 exports.save = function (req, res) {
-  models.Track.create({
+  models.Track.findOrCreate({
     name: req.body.name,
     released: req.body.released,
     path: req.body.path,

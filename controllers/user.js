@@ -9,7 +9,7 @@ exports.list = function (req, res, next) {
 };
 
 exports.create = function (req, res, next) {
-  models.User.create({
+  models.User.findOrCreate({
     email: req.body.email,
     username: req.body.username,
     password: req.body.password,

@@ -17,6 +17,10 @@ module.exports = function (sequelize, DataTypes) {
     },
     label: {
       type: DataTypes.STRING
+    },
+    path_ref: {
+      type: DataTypes.STRING,
+      unique: true
     }
   }, {
     underscored: true,

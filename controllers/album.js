@@ -9,7 +9,7 @@ exports.list = function (req, res) {
 };
 
 exports.create = function (req, res) {
-  models.Album.create({
+  models.Album.findOrCreate({
     name: req.body.name,
     release: req.body.release,
     label: req.body.label,

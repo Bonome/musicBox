@@ -16,10 +16,12 @@ var session = require('express-session');
 var routes = require('./routes/index');
 var login = require('./routes/login');
 var user = require('./routes/user');
+var directory = require('./routes/directory');
 var artist = require('./routes/artist');
 var album = require('./routes/album');
 var track = require('./routes/track');
 var genre = require('./routes/genre');
+var scan = require('./routes/scan');
 
 var models = require("./models"); 
 
@@ -53,10 +55,12 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/login', login);
 app.use('/user', user);//authController.isAuthenticated, 
+app.use('/directory', directory);
 app.use('/artist', artist);
 app.use('/album', album);
 app.use('/track', track);
 app.use('/genre', genre);
+app.use('/scan', scan);
 app.get('/logout', function(req, res) {
   req.logout();
   res.json(true);
