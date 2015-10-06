@@ -60,7 +60,7 @@ module.exports = function (sequelize, DataTypes) {
           foreignKey: 'track_id'
         });
         this.belongsToMany(models.Album, {
-          as: 'released_on',
+//          as: 'released_on',
           through: 'Track_Albums', 
           foreignKey: 'track_id'
         });

@@ -37,19 +37,22 @@ exports.parseFile = function (file) {
             album.name = metadata['album'];
             album.path_ref = utils.getAlbumPathRef(file);
             album.artist_id = artistSaved.id;
-            albumController.save(album);
-          }
-          if (album_artist.name !== artist.name) {
-            artistController.save(artist).then(function (trackArtistSaved) {
-              track = self.parseTrack(file, metadata);
-              trackController.save(track).then(function (trackSaved) {
-                trackSaved.setArtists(trackArtistSaved);
-              });
-            });
-          } else {
-            track = self.parseTrack(file, metadata);
-            trackController.save(track).then(function (trackSaved) {
-              trackSaved.setArtists(artistSaved);
+            albumController.save(album).then(function (albumSaved) {
+              if (album_artist.name !== artist.name) {
+                artistController.save(artist).then(function (trackArtistSaved) {
+                  track = self.parseTrack(file, metadata);
+                  trackController.save(track).then(function (trackSaved) {
+                    trackSaved.setArtists(trackArtistSaved);
+                    trackSaved.setAlbums(albumSaved);
+                  });
+                });
+              } else {
+                track = self.parseTrack(file, metadata);
+                trackController.save(track).then(function (trackSaved) {
+                  trackSaved.setArtists(artistSaved);
+                  trackSaved.setAlbums(albumSaved);
+                });
+              }
             });
           }
         });
@@ -66,13 +69,13 @@ exports.parseTrack = function (file, metadata) {
     track.name = utils.getFileName(file);
   }
   if (metadata['year'] != null) {
-    track.released = metadata['year']+"";
+    track.released = metadata['year'] + "";
   }
   if (metadata['track'] != null && metadata['track']['no'] != null) {
-    track.track_number = metadata['track']['no']+"";
+    track.track_number = metadata['track']['no'] + "";
   }
   if (metadata['disk'] != null && metadata['disk']['no'] != null) {
-    track.disc_number = metadata['disk']['no']+"";
+    track.disc_number = metadata['disk']['no'] + "";
   }
   track.path = file;
   if (metadata['duration'] != null) {
