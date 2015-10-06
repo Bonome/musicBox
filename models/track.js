@@ -16,9 +16,16 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     path: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      unique: true
     },
     label: {
+      type: DataTypes.STRING
+    },
+    track_number: {
+      type: DataTypes.STRING
+    },
+    disc_number: {
       type: DataTypes.STRING
     },
     length: {
@@ -48,7 +55,7 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       associate: function (models) {
         this.belongsToMany(models.Artist, {
-          as: 'performed_by',
+//          as: 'performed_by',
           through: 'Track_Artists', 
           foreignKey: 'track_id'
         });
