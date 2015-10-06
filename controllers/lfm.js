@@ -1,13 +1,34 @@
 "use strict";
 
-exports.isLoggedIn = function (req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  } else {
-    res.status(401).json({
-        error: 'unauthorized'
+var q = require("q");
+
+var ArtistCtrl = require('../controllers/artist');
+var LastfmAPI = require('lastfmapi');
+
+var lfm = new LastfmAPI({
+  'api_key': '57ee3318536b23ee81d6b27e36997cde'
+});
+
+exports.getBioArtist = function (artist) {
+  var deferred = q.defer();
+  lfm.artist.getInfo({
+    'artist': artist.name
+  }, function (err, artistlfm) {
+    if (err) {
+      deferred.reject(err);
+    }
+    if (artistlfm != null && artistlfm.bio != null) {
+      artist.biography = artistlfm.bio.content;
+      ArtistCtrl.update(artist).then(function (artistUpdated) {
+        deferred.resolve(artistUpdated);
+      }).catch(function (err) {
+        deferred.reject(err);
       });
-  }
+    }else{
+      deferred.reject(undefined);
+    }
+  });
+  return deferred.promise;
 };
 
 ////// Load required packages

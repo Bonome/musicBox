@@ -13,7 +13,8 @@ exports.create = function (req, res) {
     name: req.body.name,
     release: req.body.release,
     label: req.body.label,
-    artist_id: req.body.artist_id
+    artist_id: req.body.artist_id,
+    path_ref: req.body.path_ref
   }).then(function (albums) {
     res.json(albums.dataValues);
   }).catch(function (error) {
@@ -34,7 +35,8 @@ exports.update = function (req, res) {
       name: req.body.name,
       release: req.body.release,
       label: req.body.label,
-      artist_id: req.body.artist_id
+      artist_id: req.body.artist_id,
+      path_ref: req.body.path_ref
     }).then(function (album) {
       res.json(album.dataValues);
     }).catch(function (error) {

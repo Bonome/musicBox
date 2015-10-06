@@ -1,10 +1,9 @@
-var models = require("../models");
-var q = require("q");
-var LastfmAPI = require('lastfmapi');
+"use strict";
 
-var lfm = new LastfmAPI({
-  'api_key': '57ee3318536b23ee81d6b27e36997cde'
-});
+var q = require("q");
+
+var models = require("../models");
+var lastfm = require('../controllers/lfm');
 
 var self = this;
 
@@ -13,89 +12,104 @@ exports.list = function (req, res) {
     res.json(artists);
   });
 };
+
 exports.getByName = function (name) {
-  models.Artist.findAll({
+  var deferred = q.defer();
+  models.Artist.find({
     where: {
       name: name
     }
-  }).then(function(artist) {
-    return artist;
-  });
-};
-
-exports.save = function (req, res) {
-  var deferred = q.defer();
-  models.Artist.create({
-    name: req.body.name,
-    biography: req.body.biography,
-    nationality: req.body.nationality,
-    label: req.body.label,
-    actives_years: req.body.actives_years
-  }).then(function (artists) {
-    if (artists.biography == null) {
-      lfm.artist.getInfo({
-        'artist': artists.name
-      }, function (err, artist) {
-        if (err) {
-          throw err;
-        }
-        artists.biography = artist.bio.content;
-        self.update({
-          body: artists
-        });
-      });
-    }
-    if (res != null) {
-      res.json(artists.dataValues);
+  }).then(function (artist) {
+    if (artist != null) {
+      deferred.resolve(artist);
     } else {
-      deferred.resolve(artists.dataValues);
+      deferred.reject(undefined);
     }
-  }).catch(function (error) {
-    console.log("ops: " + error);
-    if (res != null) {
-      res.status(500).json({
-        error: 'error'
-      });
-    } else {
-      var a = self.getByName(req.body.name);
-      deferred.reject(a);
-    }
+  }).catch(function (err) {
+    deferred.reject(err);
   });
   return deferred.promise;
 };
 
-exports.update = function (req, res) {
-  models.Artist.find({
-    where: {
-      id: req.body.id
-    }
+exports.create = function (artist) {
+  var deferred = q.defer();
+  models.Artist.create({
+    name: artist.name,
+    biography: artist.biography,
+    nationality: artist.nationality,
+    label: artist.label,
+    actives_years: artist.actives_years
   }).then(function (artist) {
-    artist.updateAttributes({
-      name: req.body.name,
-      biography: req.body.biography,
-      nationality: req.body.nationality,
-      label: req.body.label,
-      actives_years: req.body.actives_years
-    }).then(function (artist) {
-      if (res != null) {
-        res.json(artist.dataValues);
-      } else {
-        return true;
+    deferred.resolve(artist);
+  }).catch(function (err) {
+    deferred.reject(err);
+  });
+  return deferred.promise;
+};
+
+exports.save = function (artist) {
+  var deferred = q.defer();
+  //check if artist is in db
+  self.getByName(artist.name).then(function (artist) {
+    //if it is, test biography field, get and add if not 
+    if (artist.biography == null) {
+      lastfm.getBioArtist(artist.dataValues);
+    }
+    //return artist in db
+    deferred.resolve(artist.dataValues);
+  }).catch(function (err) {
+    //if artist isn't in db save it
+    self.create(artist).then(function (artist) {
+      //test biography field, get and add if not 
+      if (artist.biography == null) {
+        lastfm.getBioArtist(artist);
       }
+      //return artist saved in db
+      deferred.resolve(artist.dataValues);
     }).catch(function (error) {
-      console.log("ops: " + error);
-      if (res != null) {
-        res.status(500).json({
-          error: 'error'
-        });
-      } else {
-        return false;
-      }
+      console.log("oops: " + error);
+      deferred.reject(error);
     });
-  }).catch(function (error) {
-    console.log("ops: " + error);
+  });
+  return deferred.promise;
+};
+
+exports.saveFromHttp = function (req, res) {
+  self.save(req.body).then(function (artist) {
+    res.json(artist);
+  }).catch(function (err) {
     res.status(500).json({
-      error: 'error'
+      error: 'error during creation'
+    });
+  });
+};
+
+exports.update = function (artist) {
+  var deferred = q.defer();
+  models.Artist.update({
+    name: artist.name,
+    biography: artist.biography,
+    nationality: artist.nationality,
+    label: artist.label,
+    actives_years: artist.actives_years
+  }, {
+    where: {
+      id: artist.id
+    }
+  }).then(function(artistUpdated){
+    deferred.resolve(artistUpdated.dataValues);
+  }).catch(function(err){
+    deferred.reject(err);
+  });
+  return deferred.promise;
+};
+
+exports.updateFromHttp = function (req, res) {
+  self.update(req.body).then(function (artist) {
+    res.json(artist);
+  }).catch(function (err) {
+    res.status(500).json({
+      error: 'error during update'
     });
   });
 };
