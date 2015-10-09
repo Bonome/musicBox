@@ -61,6 +61,10 @@ exports.parseFile = function (file) {
   });
 };
 
+exports.parseArtist = function (metadata) {
+  
+};
+
 exports.parseTrack = function (file, metadata) {
   var track = {};
   if (metadata['title'] != null) {

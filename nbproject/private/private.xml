@@ -8,12 +8,16 @@
             <file>file:/home/bonome/Workspace/mb/models/index.js</file>
             <file>file:/home/bonome/Workspace/mb/routes/artist.js</file>
             <file>file:/home/bonome/Workspace/mb/routes/track.js</file>
+            <file>file:/home/bonome/Workspace/mb/bin/www</file>
             <file>file:/home/bonome/Workspace/mb/app.js</file>
             <file>file:/home/bonome/Workspace/mb/models/directory.js</file>
+            <file>file:/home/bonome/Workspace/mb/controllers/lfm.js</file>
             <file>file:/home/bonome/Workspace/mb/controllers/artist.js</file>
             <file>file:/home/bonome/Workspace/mb/routes/scan.js</file>
             <file>file:/home/bonome/Workspace/mb/controllers/scan_folders.js</file>
+            <file>file:/home/bonome/Workspace/mb/tmp/lfmArtistGetInfo.json</file>
             <file>file:/home/bonome/Workspace/mb/routes/directory.js</file>
+            <file>file:/home/bonome/Workspace/mb/controllers/process_files.js</file>
             <file>file:/home/bonome/Workspace/mb/config/config.json</file>
             <file>file:/home/bonome/Workspace/mb/models/artist.js</file>
         </group>
