@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2015 bonome
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!--<md-button ng-click="lib.getArtists()" >
+    <ng-md-icon icon="refresh"  size="36"></ng-md-icon> 
+    Refresh Artists
+</md-button>-->
+<!--<div layout="row" layout-align="center center">-->
+    <md-list layout="row" flex>
+        <md-list-item ng-repeat="artist in lib.artists">
+            <md-card>
+                <img src="./assets/svg/avatar.png" class="md-card-image" alt="image caption">
+                <md-card-content>
+                    <h2>{{lib.displayName(artist)}}</h2>
+                    <p>Card content</p>
+                </md-card-content>
+                <div class="md-actions" layout="row" layout-align="end center">
+                    <md-button>Action 1</md-button>
+                    <md-button>Action 2</md-button>
+                </div>
+            </md-card>
+        </md-list-item>
+    </md-list>
+<!--</div>-->

@@ -1,0 +1,18 @@
+<md-list>
+    <md-list-item>
+        <md-button ng-click="menu.selectItem('library')" ng-class="{'selected' : menu.selected === 'library' }">
+            <ng-md-icon icon="my_library_music"  size="36"></ng-md-icon> 
+            Library
+        </md-button>
+<!--        <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
+            <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
+            {{it.name}}
+        </md-button>-->
+    </md-list-item>
+    <md-list-item>
+        <md-button ng-click="menu.selectItem('settings')" ng-class="{'selected' : menu.selected === 'settings' }">
+            <ng-md-icon icon="settings" size="36"></ng-md-icon> 
+            Settings
+        </md-button>
+    </md-list-item>
+</md-list>
