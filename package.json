@@ -23,7 +23,7 @@
     "lastfmapi": "0.0.6",
     "less-middleware": "1.0.x",
     "morgan": "~1.6.1",
-    "musicmetadata": "^2.0.0",
+    "musicmetadata": "git://github.com/Bonome/musicmetadata.git",
     "mysql": "^2.9.0",
     "node-wikipedia": "0.0.2",
     "passport": "^0.3.0",
