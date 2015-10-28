@@ -1,0 +1,19 @@
+{
+  "musicPath": "/home/user/Musique",
+  "development": {
+    "username": "userdb",
+    "password": "mdpdb",
+    "database": "musicboxdevdb",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3306"
+  },
+  "production": {
+    "username": "userdb",
+    "password": "mdpdb",
+    "database": "musicboxproddb",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3306"
+  }
+}
