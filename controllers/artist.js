@@ -23,7 +23,7 @@ exports.getByName = function (name) {
     if (artist != null) {
       deferred.resolve(artist);
     } else {
-      deferred.reject(undefined);
+      deferred.reject("not found");
     }
   }).catch(function (err) {
     deferred.reject(err);
@@ -42,7 +42,17 @@ exports.create = function (artist) {
   }).then(function (artist) {
     deferred.resolve(artist);
   }).catch(function (err) {
-    deferred.reject(err);
+    if (err.name === "SequelizeUniqueConstraintError") {
+      self.getByName(artist.name).then(function (artistdb) {
+        deferred.resolve(artistdb);
+      }).catch(function (error) {
+        console.log("oops artist create get : " + error);
+        deferred.reject(err);
+      });
+    } else {
+      console.log("oops artist create : " + err);
+      deferred.reject(err);
+    }
   });
   return deferred.promise;
 };
@@ -56,27 +66,27 @@ exports.save = function (artist) {
       lastfm.getBioArtist(artist.dataValues);
     }
     //return artist in db
-    deferred.resolve(artist.dataValues);
+    deferred.resolve(artist);
   }).catch(function (err) {
     //if artist isn't in db save it
     self.create(artist).then(function (artist) {
       //test biography field, get and add if not 
       if (artist.biography == null) {
-        lastfm.getBioArtist(artist);
+        lastfm.getBioArtist(artist.dataValues);
       }
       //return artist saved in db
-      deferred.resolve(artist.dataValues);
+      deferred.resolve(artist);
     }).catch(function (error) {
-      console.log("oops: " + error);
+      console.log("oops artist save : " + error);
       deferred.reject(error);
     });
   });
   return deferred.promise;
 };
 
-exports.saveFromHttp = function (req, res) {
+exports.saveFromRest = function (req, res) {
   self.save(req.body).then(function (artist) {
-    res.json(artist);
+    res.json(artist.dataValues);
   }).catch(function (err) {
     res.status(500).json({
       error: 'error during creation'
@@ -96,17 +106,17 @@ exports.update = function (artist) {
     where: {
       id: artist.id
     }
-  }).then(function(artistUpdated){
-    deferred.resolve(artistUpdated.dataValues);
-  }).catch(function(err){
+  }).then(function (artistUpdated) {
+    deferred.resolve(artistUpdated);
+  }).catch(function (err) {
     deferred.reject(err);
   });
   return deferred.promise;
 };
 
-exports.updateFromHttp = function (req, res) {
+exports.updateFromRest = function (req, res) {
   self.update(req.body).then(function (artist) {
-    res.json(artist);
+    res.json(artist.dataValues);
   }).catch(function (err) {
     res.status(500).json({
       error: 'error during update'

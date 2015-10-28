@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
           as: 'contains_dir',
           foreignKey: 'directory_id'
         });
-        this.hasMany(models.Directory, {
+        this.hasMany(models.Track, {
           as: 'contains_file',
           foreignKey: 'directory_id'
         });

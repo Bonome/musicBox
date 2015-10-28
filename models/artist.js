@@ -23,6 +23,9 @@ module.exports = function (sequelize, DataTypes) {
     },
     actives_years: {
       type: DataTypes.STRING
+    },
+    path_picture: {
+      type: DataTypes.STRING
     }
   }, {
     underscored: true,

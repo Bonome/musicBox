@@ -1,13 +1,23 @@
 {
-    "name": "mb",
-    "version": "1.0.0",
-    "main": "path/to/main.css",
-    "ignore": [
-        ".jshintrc",
-        "**/*.txt"
-    ],
-    "dependencies": {
-    },
-    "devDependencies": {
-    }
+  "name": "mb",
+  "version": "1.0.0",
+  "main": "public/assets/app.css",
+  "homepage": "https://github.com/Bonome/musicBox",
+  "licence": "GPL-3.0",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-animate": "~1.4.7",
+    "angular-aria": "~1.4.7",
+    "angular-material": "~0.11.2",
+    "angular-material-icons": "~0.6.0",
+    "angular-ui-router": "ui-router#~0.2.15",
+    "material-design-icons": "~2.0.0"
+  },
+  "devDependencies": {
+    "angular-material": "https://github.com/angular/bower-material.git#master"
+  }
 }

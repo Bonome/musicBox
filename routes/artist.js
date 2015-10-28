@@ -6,9 +6,9 @@ var controller = require('../controllers/artist');
 
 router.get('/', controller.list);
 
-router.post('/', controller.saveFromHttp);
+router.post('/', controller.saveFromRest);
 
-router.put('/', controller.updateFromHttp);
+router.put('/', controller.updateFromRest);
 
 router.delete('/', controller.delete);
 
