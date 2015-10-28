@@ -10,13 +10,15 @@
             <file>file:/home/bonome/Workspace/mb/bin/www</file>
             <file>file:/home/bonome/Workspace/mb/.bowerrc</file>
             <file>file:/home/bonome/Workspace/mb/app.js</file>
-            <file>file:/home/bonome/Workspace/mb/public/config.js</file>
             <file>file:/home/bonome/Workspace/mb/public/index.html</file>
+            <file>file:/home/bonome/Workspace/mb/public/config.js</file>
+            <file>file:/home/bonome/Workspace/mb/controllers/artist.js</file>
             <file>file:/home/bonome/Workspace/mb/bower.json</file>
             <file>file:/home/bonome/Workspace/mb/public/app.js</file>
             <file>file:/home/bonome/Workspace/mb/public/src/library/library.js</file>
             <file>file:/home/bonome/Workspace/mb/public/src/users/UserService.js</file>
             <file>file:/home/bonome/Workspace/mb/public/src/sideMenu/side-menu.js</file>
+            <file>file:/home/bonome/Workspace/mb/controllers/process_files.js</file>
             <file>file:/home/bonome/Workspace/mb/models/artist.js</file>
             <file>file:/home/bonome/Workspace/mb/public/src/library/view/library.html</file>
             <file>file:/home/bonome/Workspace/mb/public/src/users/Users.js</file>

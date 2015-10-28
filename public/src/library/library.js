@@ -20,45 +20,53 @@
     var library = angular
             .module('library', [])
             .controller('LibraryController', [
-        '$log', '$http', '$filter',
-        LibraryController
-    ]);
+                '$log', '$http', '$filter', '$state',
+                LibraryController
+            ]);
 
     /**
      * Main Controller for the Angular Material Starter App
      * @param $log
      * @param $http
+     * @param $filter
+     * @param $state
      * @constructor
      */
-    function LibraryController($log, $http, $filter) {
+    function LibraryController($log, $http, $filter, $state) {
         var self = this;
-        
+
         self.artists = [];
-        
+
         self.getArtists = getAllArtists;
         self.displayName = displayName;
+        self.artistDetails = artistDetails;
 
-        (function init(){
-            if(self.artists.length === 0){
+        (function init() {
+            if (self.artists.length === 0) {
                 self.getArtists();
             }
         })();
-        
-        function getAllArtists () {
-            $http.get('artist').success(function(artists){
+
+        function getAllArtists() {
+            $http.get('artist').success(function (artists) {
                 self.artists = artists;
             });
         }
-        
-        function displayName(artist){
-            var limit = 13;
+
+        function displayName(artist) {
+            var limit = 28;
             var name = artist.name;
-            if(name.length >= limit){
+            if (name.length > limit) {
                 return $filter('limitTo')(name, limit) + "..";
             }
             return name;
         }
-        
+
+        function artistDetails(artist) {
+            console.log(artist.name);
+            $state.go('artist');
+        }
+
     }
 
 })();

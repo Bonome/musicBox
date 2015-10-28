@@ -39,17 +39,17 @@ md-sidenav  md-list {
 
 /* Primary content area */
 
-#content {
+.content {
     overflow: hidden;
 }
 
-#content  {
+.content  {
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 5px;
 }
 
-#content .md-button.contact {
+.content .md-button.contact {
     background-color: transparent;
     border: none;
     width: 48px;
@@ -60,11 +60,11 @@ md-sidenav  md-list {
     right: 40px;
 }
 
-#content md-icon.avatar {
+.content md-icon.avatar {
     margin-top: 10px;
 }
 
-#content .md-button.contact > md-icon {
+.content .md-button.contact > md-icon {
     fill:black;
     width:36px;
     height:36px;
@@ -76,17 +76,22 @@ md-button.menuBtn > md-icon {
     height:24px;
 }
 
-#content .md-button.contact:active > md-icon {
+.content .md-button.contact:active > md-icon {
     background-color: #dadada;
     border-radius: 75%;
     padding:4px;
     transition: all 100ms ease-out 30ms;
 }
 
-#content img {
+.content img {
     display: block;
     height: auto;
     max-width: 500px;
+    /* border-top-left-radius: 3px; */
+    /* border-top-right-radius: 3px; */
+    /* border-bottom-left-radius: 50px; */
+    /* border-bottom-right-radius: 25px; */
+    /* padding: 5px; */
 }
 
 /* Utils */
@@ -134,4 +139,22 @@ span.name {
 */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
+}
+
+.content span {
+    width: 184px;
+}
+
+md-card {
+    /* border-top-left-radius: 3px; */
+    /* border-top-right-radius: 3px; */
+    /* border-bottom-left-radius: 3px; */
+    /* border-bottom-right-radius: 25px; */
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+md-card md-card-content {
+    padding: 16px 0 16px;
 }

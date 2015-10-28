@@ -1,20 +1,28 @@
 (function () {
-    var app = angular.module('mbApp', ['ngMaterial', 'ngMdIcons', 'ui.router', 'sideMenu', 'library', 'settings'])
+    var app = angular.module('mbApp', ['ngMaterial', 'ngMdIcons', 'ui.router', 'sideMenu', 'library', 'settings', 'artist'])
             .config(function ($mdThemingProvider, $mdIconProvider, $stateProvider, $urlRouterProvider) {
 
                 $urlRouterProvider.otherwise('/library');
 
                 $stateProvider
 
-                        // HOME STATES AND NESTED VIEWS ========================================
+                        // LIBRARY STATES AND NESTED VIEWS ========================================
                         .state('library', {
                             url: '/library',
                             templateUrl: './src/library/view/library.html',
                             controller: 'LibraryController',
                             controllerAs: 'lib'
                         })
+                        
+                        // DETAILS ARTIST STATES AND NESTED VIEWS ========================================
+                        .state('artist', {
+                            url: '/artist',
+                            templateUrl: './src/artist/view/artist.html',
+                            controller: 'ArtistController',
+                            controllerAs: 'artist'
+                        })
 
-                        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+                        // SETTINGS PAGE AND MULTIPLE NAMED VIEWS =================================
                         .state('settings', {
                             url: '/settings',
                             templateUrl: './src/settings/view/settings.html',

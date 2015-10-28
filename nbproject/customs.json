@@ -1,0 +1,58 @@
+{
+    "elements": {
+        "md-card": {},
+        "md-toolbar": {
+            "attributes": {
+                "layout": {},
+                "class": {}
+            }
+        },
+        "md-icon": {
+            "attributes": {
+                "md-svg-icon": {},
+                "class": {}
+            }
+        },
+        "md-sidenav": {
+            "attributes": {
+                "md-component-id": {},
+                "md-is-open": {},
+                "class": {},
+                "md-is-locked-open": {}
+            }
+        },
+        "side-menu": {
+            "attributes": {
+                "control": {}
+            }
+        },
+        "md-list-item": {
+            "attributes": {
+                "ng-repeat": {}
+            }
+        },
+        "md-button": {
+            "attributes": {
+                "ng-click": {},
+                "class": {},
+                "aria-label": {}
+            }
+        },
+        "md-list": {},
+        "md-content": {
+            "attributes": {
+                "ui-view": {},
+                "id": {}
+            }
+        },
+        "md-card-content": {}
+    },
+    "attributes": {
+        "flex": {
+            "context": "div"
+        },
+        "layout-align": {
+            "context": "div"
+        }
+    }
+}
