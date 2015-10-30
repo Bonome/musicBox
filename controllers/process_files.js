@@ -32,7 +32,6 @@ exports.parseFile = function (file) {
       }
       if (artist.name != null) {
         artistController.save(album_artist).then(function (artistSaved) {
-          //TODO save album and link with albumartist
           if (metadata['album'] != null) {
             album.name = metadata['album'];
             album.path_ref = utils.getAlbumPathRef(file);

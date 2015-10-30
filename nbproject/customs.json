@@ -1,6 +1,10 @@
 {
     "elements": {
-        "md-card": {},
+        "md-card": {
+            "attributes": {
+                "ng-click": {}
+            }
+        },
         "md-toolbar": {
             "attributes": {
                 "layout": {},
@@ -45,7 +49,16 @@
                 "id": {}
             }
         },
-        "md-card-content": {}
+        "md-card-content": {},
+        "md-grid-list": {
+            "attributes": {
+                "md-cols-lg": {},
+                "md-cols-sm": {},
+                "md-cols-md": {},
+                "md-cols-gt-lg": {},
+                "md-row-height": {}
+            }
+        }
     },
     "attributes": {
         "flex": {

@@ -15,19 +15,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<!--<md-button ng-click="lib.getArtists()" >
-    <ng-md-icon icon="refresh"  size="36"></ng-md-icon> 
-    Refresh Artists
-</md-button>-->
-<!--<div layout="row" layout-align="center center">-->
-    <md-list layout="row">
-        <md-list-item ng-repeat="artist in lib.artists">
-            <md-card ng-click="lib.artistDetails(artist)">
-                <img src="./assets/svg/avatar.png" class="md-card-image artists" alt="image caption">
-                <md-card-content>
-                    <span>{{lib.displayName(artist)}}</span>
-                </md-card-content>
-            </md-card>
-        </md-list-item>
-    </md-list>
-<!--</div>-->
+<md-grid-list md-cols-sm="2" md-cols-md="3" md-cols-lg="5" md-cols-gt-lg="7" md-row-height="4:5" >
+    <md-grid-tile md-colspan="1" ng-repeat="artist in lib.artists">
+        <md-card ng-click="lib.artistDetails(artist)">
+                <img src="./assets/svg/avatar.png" class="md-card-image artists" alt="Artist overview">
+            <md-card-content>
+                <span>{{artist.name}}</span>
+            </md-card-content>
+        </md-card>
+    </md-grid-tile>
+</md-grid-list>
