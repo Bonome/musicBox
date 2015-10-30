@@ -63,22 +63,15 @@ md-sidenav  md-list {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    /* padding-right: 16px; */
     max-width: 100%;
-    /* table-layout: fixed; */
     }
 
 md-card {
-    /* border-top-left-radius: 3px; */
-    /* border-top-right-radius: 3px; */
-    /* border-bottom-left-radius: 3px; */
-    /* border-bottom-right-radius: 25px; */
     padding-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
     max-width: 94%;
     margin: 0;
-    /* height: 93%; */
 }
 
 md-card md-card-content {
