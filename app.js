@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 //var authController = require('./controllers/auth');
 
+var config = require(__dirname + '/config/config.json');
 //var routes = require('./routes');
 //console.log(routes);
 var routes = require('./routes/index');
@@ -44,6 +45,7 @@ app.use(require('connect-multiparty')());
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/data',express.static(config.musicPath));
 
 app.use(session({
   secret: 'zomaareefdssdnstukjetekstDatjenietzomaarbedenkt',

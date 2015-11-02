@@ -61,6 +61,13 @@
             }
             return name;
         }
+        function displayThumbnail(artist) {
+            var path = artist.path_picture;
+            if (path == null) {
+                path = "../assets/svg/avatar.png";
+            }
+            return path;
+        }
 
         function artistDetails(artist) {
             console.log(artist.name);
