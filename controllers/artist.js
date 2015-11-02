@@ -12,6 +12,11 @@ exports.list = function (req, res) {
     res.json(artists);
   });
 };
+exports.listAlbumArtists = function (req, res) {
+  models.Artist.findAll({ include: [{model: models.Album, required: true}]}).then(function (artists) {
+    res.json(artists);
+  });
+};
 
 exports.getByName = function (name) {
   var deferred = q.defer();
