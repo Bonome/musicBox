@@ -42,7 +42,8 @@ exports.create = function (track) {
     label: track.label,
     length: track.length,
     writer: track.writer,
-    composer: track.composer
+    composer: track.composer,
+    error: track.error
 //    read_counter: track.read_counter,
 //    last_read_at: track.last_read_at
   }).then(function (track) {

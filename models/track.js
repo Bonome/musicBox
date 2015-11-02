@@ -42,6 +42,9 @@ module.exports = function (sequelize, DataTypes) {
     },
     last_read_at: {
       type: DataTypes.DATE
+    },
+    error: {
+        type: DataTypes.STRING
     }
   }, {
     underscored: true,
