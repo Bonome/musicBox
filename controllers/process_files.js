@@ -32,7 +32,7 @@ exports.parseDirOfFiles = function (listOfFiles, done) {
         if (results.path_ref === '') {
             results.path_ref = file.substring(0, file.lastIndexOf('/'));
         }
-        mm(fs.createReadStream(file), { duration: true }, function (err, metadata) {
+        mm(fs.createReadStream(file), {duration: true}, function (err, metadata) {
             if (!err) {
                 var track = self.parseTrack(file, metadata);
                 //processing album_artist
@@ -85,31 +85,11 @@ exports.parseDirOfFiles = function (listOfFiles, done) {
                 results.tracks.push(track);
                 if (!--pending) {
                     //Datas stored in ALL files of the current directory are read and stored in results
-
-                    //check if album_artist is empty and fill with artist of first track if it is
-                    if (results.album_artist.name == null) {
-                        results.album_artist.name = results.track_artist[0];
-                    }
-                    //get the thumbnail for the album artist
-                    if (results.album_artist.name !== 'Unknown Artist') {
-                        results.album_artist = utils.getImgArtistFromFS(results.album_artist, results.path_ref);
-                    }
-                    console.log(results);
                     self.saveDirOfFiles(results);
                 }
             } else {
                 if (!--pending) {
                     //Datas stored in ALL files of the current directory are read and stored in results
-
-                    //check if album_artist is empty and fill with artist of first track if it is
-                    if (results.album_artist.name == null) {
-                        results.album_artist.name = results.track_artist[0];
-                    }
-                    //get the thumbnail for the album artist
-                    if (results.album_artist.name !== 'Unknown Artist') {
-                        results.album_artist = utils.getImgArtistFromFS(results.album_artist, results.path_ref);
-                    }
-                    console.log(results);
                     self.saveDirOfFiles(results);
                 }
             }
@@ -118,6 +98,15 @@ exports.parseDirOfFiles = function (listOfFiles, done) {
 };
 
 exports.saveDirOfFiles = function (blobInfos) {
+    //check if album_artist is empty and fill with artist of first track if it is
+    if (blobInfos.album_artist.name == null) {
+        blobInfos.album_artist.name = blobInfos.track_artist[0];
+    }
+    //get the thumbnail for the album artist
+    if (blobInfos.album_artist.name !== 'Unknown Artist') {
+        blobInfos.album_artist = utils.getImgArtistFromFS(blobInfos.album_artist, blobInfos.path_ref);
+    }
+
     //save album_artist
     artistController.save(blobInfos.album_artist).then(function (albumArtistSaved) {
         //set link between album_artist and album

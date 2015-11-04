@@ -17,11 +17,11 @@
 
 (function () {
 
-    var library = angular
-            .module('library', [])
-            .controller('LibraryController', [
-                '$log', '$http', '$filter', '$state',
-                LibraryController
+    angular
+            .module('album', [])
+            .controller('AlbumController', [
+                '$log', '$http', '$filter', '$state', '$stateParams',
+                AlbumController
             ]);
 
     /**
@@ -30,24 +30,25 @@
      * @param $http
      * @param $filter
      * @param $state
+     * @param $stateParams
      * @constructor
      */
-    function LibraryController($log, $http, $filter, $state) {
+    function AlbumController($log, $http, $filter, $state, $stateParams) {
         var self = this;
 
-        self.artists = [];
+        self.albums = [];
 
-        self.getArtists = getAllArtists;
+        self.getAlbums = getAlbumByArtist;
         self.displayName = displayName;
         self.artistDetails = artistDetails;
-
+        
         (function init() {
             if (self.artists.length === 0) {
                 self.getArtists();
             }
         })();
 
-        function getAllArtists() {
+        function getAlbumByArtist() {
             $http.get('artist').success(function (artists) {
                 self.artists = artists;
             });
@@ -70,8 +71,8 @@
         }
 
         function artistDetails(artist) {
-//            console.log(artist.name);
-            $state.go('artist', {artistName: artist.name});
+            console.log(artist.name);
+            $state.go('artist');
         }
 
     }

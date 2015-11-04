@@ -66,15 +66,27 @@ md-sidenav  md-list {
     max-width: 100%;
     }
 
-md-card {
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    max-width: 94%;
-    margin: 0;
-}
-
 md-card md-card-content {
     padding-left: 0;
     padding-right: 0;
 }
+
+h2 {
+    margin: auto 17px;
+}
+
+md-card {
+    max-width: 87%;
+    margin: 0;
+    background-color: #FFF;
+}
+
+.artists md-card {
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 94%;
+}
+
+.content .albums span {
+padding-left: 5%;width: 95%;}

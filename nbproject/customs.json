@@ -17,6 +17,13 @@
                 "class": {}
             }
         },
+        "ng-md-icon": {
+            "attributes": {
+                "size": {},
+                "icon": {},
+                "class": {}
+            }
+        },
         "md-sidenav": {
             "attributes": {
                 "md-component-id": {},
@@ -38,6 +45,7 @@
         "md-button": {
             "attributes": {
                 "ng-click": {},
+                "ng-class": {},
                 "class": {},
                 "aria-label": {}
             }
@@ -56,6 +64,7 @@
                 "md-cols-sm": {},
                 "md-cols-md": {},
                 "md-cols-gt-lg": {},
+                "class": {},
                 "md-row-height": {}
             }
         }

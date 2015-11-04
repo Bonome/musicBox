@@ -13,7 +13,16 @@ exports.list = function (req, res) {
   });
 };
 exports.listAlbumArtists = function (req, res) {
-  models.Artist.findAll({ include: [{model: models.Album, required: true}]}).then(function (artists) {
+  models.Artist.findAll({ 
+      include: [
+          {
+              model: models.Album, 
+              required: true,
+              attributes: ['id']
+          }
+      ],
+      attributes: ['name', 'path_picture']
+  }).then(function (artists) {
     res.json(artists);
   });
 };

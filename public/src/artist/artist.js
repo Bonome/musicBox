@@ -20,29 +20,52 @@
     angular
             .module('artist', [])
             .controller('ArtistController', [
-        '$log','$http',
-        ArtistController
-    ]);
+                '$log', '$http', '$filter', '$state', '$stateParams',
+                ArtistController
+            ]);
 
     /**
      * Main Controller for the Angular Material Starter App
      * @param $log
      * @param $http
+     * @param $filter
+     * @param $state
+     * @param $stateParams
      * @constructor
      */
-    function ArtistController($log, $http) {
+    function ArtistController($log, $http, $filter, $state, $stateParams) {
         var self = this;
         
-        self.scan = scanFiles;
+        self.name = $stateParams.artistName;
+        self.albums = [];
 
-        (function init(){
-            
+        self.getAlbums = getAlbumByArtist;
+        self.albumDetails = albumDetails;
+
+        (function init() {
+            if (self.albums.length === 0) {
+                self.getAlbums();
+            }
         })();
-        
-        function scanFiles () {
-            $http.get('scan');
+
+        function getAlbumByArtist() {
+            $http.get('album/' + $stateParams.artistName).success(function (albums) {
+                self.albums = albums;
+            });
         }
-        
+
+        function displayThumbnail(artist) {
+            var path = artist.path_picture;
+            if (path == null) {
+                path = "../assets/svg/avatar.png";
+            }
+            return path;
+        }
+
+        function albumDetails(album) {
+            $state.go('album');
+        }
+
     }
 
 })();
