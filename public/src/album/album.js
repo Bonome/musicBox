@@ -36,38 +36,21 @@
     function AlbumController($log, $http, $filter, $state, $stateParams) {
         var self = this;
 
-        self.albums = [];
+        self.albumsSameArtist = [];
 
-        self.getAlbums = getAlbumByArtist;
-        self.displayName = displayName;
+        self.getAlbumsSameArtist = getAlbumsSameArtist;
         self.artistDetails = artistDetails;
         
         (function init() {
-            if (self.artists.length === 0) {
-                self.getArtists();
+            if (self.albumsSameArtist.length === 0) {
+                self.getAlbumsSameArtist();
             }
         })();
 
-        function getAlbumByArtist() {
+        function getAlbumsSameArtist() {
             $http.get('artist').success(function (artists) {
                 self.artists = artists;
             });
-        }
-
-        function displayName(artist) {
-            var limit = 28;
-            var name = artist.name;
-            if (name.length > limit) {
-                return $filter('limitTo')(name, limit) + "..";
-            }
-            return name;
-        }
-        function displayThumbnail(artist) {
-            var path = artist.path_picture;
-            if (path == null) {
-                path = "../assets/svg/avatar.png";
-            }
-            return path;
         }
 
         function artistDetails(artist) {
