@@ -18,12 +18,12 @@
     var app = angular.module('mbApp', ['ngMaterial', 'ngMdIcons', 'ui.router', 'sideMenu', 'library', 'settings', 'artist', 'album'])
             .config(function ($mdThemingProvider, $mdIconProvider, $stateProvider, $urlRouterProvider) {
 
-                $urlRouterProvider.otherwise('/library');
+                $urlRouterProvider.otherwise('/library/artists');
 
                 $stateProvider
                         // LIBRARY STATES AND NESTED VIEWS ========================================
                         .state('library', {
-                            url: '/library',
+                            url: '/library/artists',
                             templateUrl: './src/library/view/library.html',
                             controller: 'LibraryController',
                             controllerAs: 'lib'
@@ -31,7 +31,7 @@
 
                         // DETAILS ARTIST STATES AND NESTED VIEWS ========================================
                         .state('artist', {
-                            url: '/artist/:artistName',
+                            url: '/library/:artistName',
                             templateUrl: './src/artist/view/artist.html',
                             controller: 'ArtistController',
                             controllerAs: 'artist'
@@ -39,7 +39,7 @@
 
                         // DETAILS ALBUM STATES AND NESTED VIEWS ========================================
                         .state('album', {
-                            url: '/album/:albumName',
+                            url: '/library/:artistName/:albumName',
                             templateUrl: './src/album/view/album.html',
                             controller: 'AlbumController',
                             controllerAs: 'album'
@@ -57,10 +57,10 @@
                         .defaultIconSet("./assets/svg/avatars.svg", 128)
                         .icon("menu", "./assets/svg/menu.svg", 24)
                         .icon("share", "./assets/svg/share.svg", 24)
-                        .icon("google_plus", "./assets/svg/google_plus.svg", 512)
-                        .icon("hangouts", "./assets/svg/hangouts.svg", 512)
-                        .icon("twitter", "./assets/svg/twitter.svg", 512)
-                        .icon("phone", "./assets/svg/phone.svg", 512);
+                        .icon("previous", "./assets/svg/chevron_left.svg", 24);
+//                        .icon("hangouts", "./assets/svg/hangouts.svg", 512)
+//                        .icon("twitter", "./assets/svg/twitter.svg", 512)
+//                        .icon("phone", "./assets/svg/phone.svg", 512);
 
 //                $mdThemingProvider.theme('default')
 //                        .primaryPalette('grey')
@@ -134,24 +134,33 @@
                         .accentPalette('customAccent')
                         .warnPalette('customWarn');
 
-            }).controller('AppController', ['$mdSidenav', AppController]);
+            }).controller('AppController', ['$mdSidenav', '$log', '$window', AppController]);
 
     /**
      * Main Controller for the Angular Material Starter App
      * @param $mdSidenav
      * @param $log
+     * @param $window
      * @constructor
      */
-    function AppController($mdSidenav, $log) {
+    function AppController($mdSidenav, $log, $window) {
         var self = this;
 
         self.toggleList = toggleUsersList;
-
+        self.goBack = goBack;
+        
         /**
          * hide or Show the 'left' sideNav area
          */
         function toggleUsersList() {
             $mdSidenav('left').toggle();
+        }
+        
+        /**
+         * go back to previous "page"
+         */
+        function goBack() {
+            $window.history.back();
         }
     }
 })();
