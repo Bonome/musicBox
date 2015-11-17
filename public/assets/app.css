@@ -12,8 +12,9 @@ html, body {
     background-color: transparent;
     border: none;
     height: 38px;
-    margin: 16px;
+    margin: 16px 4px;
     width: 36px;
+    min-width: 72px;
 }
 
 md-toolbar h1 {
@@ -79,9 +80,10 @@ md-card {
     max-width: 87%;
     margin: 0;
     background-color: #FFF;
+    cursor: pointer;
 }
 
-.artists md-card {
+md-card.artist {
     padding-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
@@ -90,3 +92,19 @@ md-card {
 
 .content .albums span {
 padding-left: 5%;width: 95%;}
+
+.previous {
+    min-width: 36px;
+    width: 36px;
+}
+
+.previous md-icon {
+    height: 36px;
+    width: 36px;
+    margin-left: -7px;
+}
+
+.biography figure {
+    overflow: auto;
+    /* padding: 20px; */
+}
