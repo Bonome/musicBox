@@ -1,26 +1,8 @@
 {
     "elements": {
-        "md-card": {
-            "attributes": {
-                "ng-click": {}
-            }
-        },
         "md-toolbar": {
             "attributes": {
                 "layout": {},
-                "class": {}
-            }
-        },
-        "md-icon": {
-            "attributes": {
-                "md-svg-icon": {},
-                "class": {}
-            }
-        },
-        "ng-md-icon": {
-            "attributes": {
-                "size": {},
-                "icon": {},
                 "class": {}
             }
         },
@@ -32,14 +14,49 @@
                 "md-is-locked-open": {}
             }
         },
-        "side-menu": {
-            "attributes": {
-                "control": {}
-            }
-        },
         "md-list-item": {
             "attributes": {
                 "ng-repeat": {}
+            }
+        },
+        "md-grid-tile": {
+            "attributes": {
+                "md-colspan": {},
+                "md-rowspan": {},
+                "ng-repeat": {}
+            }
+        },
+        "md-list": {},
+        "md-content": {
+            "attributes": {
+                "ui-view": {},
+                "id": {},
+                "class": {}
+            }
+        },
+        "md-card": {
+            "attributes": {
+                "ng-click": {}
+            }
+        },
+        "md-icon": {
+            "attributes": {
+                "md-svg-icon": {},
+                "size": {},
+                "icon": {},
+                "class": {}
+            }
+        },
+        "ng-md-icon": {
+            "attributes": {
+                "size": {},
+                "icon": {},
+                "class": {}
+            }
+        },
+        "side-menu": {
+            "attributes": {
+                "control": {}
             }
         },
         "md-button": {
@@ -50,11 +67,11 @@
                 "aria-label": {}
             }
         },
-        "md-list": {},
-        "md-content": {
+        "mb-button": {
             "attributes": {
-                "ui-view": {},
-                "id": {}
+                "ng-click": {},
+                "class": {},
+                "aria-label": {}
             }
         },
         "md-card-content": {},
@@ -63,6 +80,8 @@
                 "md-cols-lg": {},
                 "md-cols-sm": {},
                 "md-cols-md": {},
+                "md-colspan": {},
+                "md-rowspan": {},
                 "md-cols-gt-lg": {},
                 "class": {},
                 "md-row-height": {}
@@ -73,6 +92,7 @@
         "flex": {
             "context": "div"
         },
+        "class": {},
         "layout-align": {
             "context": "div"
         }

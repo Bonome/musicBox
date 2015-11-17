@@ -29,7 +29,7 @@ exports.getFileName = function (file) {
  */
 exports.getImgArtistFromFS = function (entity, file) {
     var thumbnailSize = config.thumbnailSize;
-    var indexOfEntity = file.indexOf("/", config.musicPath.length + 1);
+    var indexOfEntity = file.indexOf("/", config.musicPath.length+1);
     var pathOfEntity = file.substring(0, indexOfEntity);
     var absolutPathImg = pathOfEntity + "/artist_" + thumbnailSize + "x" + thumbnailSize + ".jpg";
     var pathImg = file.substring(config.musicPath.length + 1, indexOfEntity) + "/artist_" + thumbnailSize + "x" + thumbnailSize + ".jpg";

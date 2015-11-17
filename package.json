@@ -32,7 +32,7 @@
     "passport-local": "^1.0.0",
     "passport-local-sequelize": "^0.6.0",
     "q": "^1.4.1",
-    "sequelize": "^3.9.0",
+    "sequelize": "~3.9.0",
     "serve-favicon": "~2.3.0",
     "validator": "^4.0.6",
     "watch": "^0.16.0"

@@ -40,10 +40,10 @@ exports.create = function (track) {
     track_number: track.track_number,
     disc_number: track.disc_number,
     label: track.label,
-    length: track.length,
+    length: track.length+"",
     writer: track.writer,
     composer: track.composer,
-    error: track.error
+    error: JSON.stringify(track.error)
 //    read_counter: track.read_counter,
 //    last_read_at: track.last_read_at
   }).then(function (track) {

@@ -47,6 +47,7 @@ exports.getByName = function (name) {
 
 exports.create = function (artist) {
   var deferred = q.defer();
+//  models.Artist.findOrCreate({
   models.Artist.create({
     name: artist.name,
     biography: artist.biography,
@@ -54,6 +55,10 @@ exports.create = function (artist) {
     label: artist.label,
     actives_years: artist.actives_years,
     path_picture: artist.path_picture
+//    where: {
+//        name: artist.name,
+//        path_picture: artist.path_picture
+//    }
   }).then(function (artist) {
     deferred.resolve(artist);
   }).catch(function (err) {
@@ -85,6 +90,7 @@ exports.save = function (artist) {
   }).catch(function (err) {
     //if artist isn't in db save it
     self.create(artist).then(function (artistdb) {
+//        artistdb = artistdb[0];
       //test biography field, get and add if not 
       if (artistdb.biography == null) {
         lastfm.getArtist(artistdb.dataValues);
