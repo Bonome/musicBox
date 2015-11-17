@@ -47,7 +47,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
         <md-toolbar layout="row" class="md-whiteframe-z1">
-            <md-button class="menu" ng-click="appCtrl.toggleList()" aria-label="Navigation menu0">
+            <md-button ng-click="appCtrl.goBack()" aria-label="previous state" class="menu previous">
+                <md-icon md-svg-icon="previous"></md-icon>
+            </md-button>
+            <md-button class="menu" ng-click="appCtrl.toggleList()" aria-label="Navigation main menu">
                 <md-icon md-svg-icon="menu" ></md-icon>
             </md-button> 
             <!--<h1>Music Box</h1>-->
