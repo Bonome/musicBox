@@ -3,6 +3,7 @@
 var q = require("q");
 
 var lastfm = require('../controllers/lfm');
+var artistCtrl = require('../controllers/artist');
 var models = require("../models");
 var self = this;
 
@@ -20,12 +21,20 @@ exports.getAlbumsByArtist = function (req, res) {
                 where: {
                     name: req.params.artistName
                 },
-                attributes: ['name']
+                attributes: []
             }
         ],
         attributes: ['name', 'path_picture']
     }).then(function (albums) {
-        res.json(albums);
+        artistCtrl.getByName(req.params.artistName)
+                .then(function (artist) {
+                    res.json({
+                        'data': albums,
+                        'meta': {
+                            'artist': artist
+                        }
+                    });
+                });
     });
 };
 
