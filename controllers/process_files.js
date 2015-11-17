@@ -30,7 +30,7 @@ exports.parseDirOfFiles = function (listOfFiles, done) {
             done(null, results);
         }
         if (results.path_ref === '') {
-            results.path_ref = file.substring(0, file.lastIndexOf('/'));
+            results.path_ref = file.substring(0, file.lastIndexOf('/')+1);
         }
         mm(fs.createReadStream(file), {duration: true}, function (err, metadata) {
             if (!err) {
@@ -90,7 +90,9 @@ exports.parseDirOfFiles = function (listOfFiles, done) {
             } else {
                 if (!--pending) {
                     //Datas stored in ALL files of the current directory are read and stored in results
-                    self.saveDirOfFiles(results);
+                    if (results.tracks.length > 0) {
+                        self.saveDirOfFiles(results);
+                    }
                 }
             }
         });
