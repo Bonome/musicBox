@@ -13,6 +13,11 @@ exports.getAlbumPathRef = function (file) {
     return file.substring(dirPath.length, indexOfLastSlash);
 };
 
+exports.getFilePathRef = function (file) {
+    var dirPath = config.musicPath;
+    return file.substring(dirPath.length);
+};
+
 exports.getFileName = function (file) {
     var dirPath = config.musicPath;
     var indexOfLastSlash = file.lastIndexOf("/");

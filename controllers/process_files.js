@@ -220,7 +220,7 @@ exports.parseTrack = function (file, metadata) {
     if (metadata['disk'] != null && metadata['disk']['no'] != null) {
         track.disc_number = metadata['disk']['no'] + "";
     }
-    track.path = file;
+    track.path = './data' + utils.getFilePathRef(file);
     if (metadata['duration'] != null) {
         track.length = metadata['duration'];
     }
