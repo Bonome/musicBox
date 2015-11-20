@@ -26,8 +26,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
         <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
-        <link rel="stylesheet" href="assets/app.css"/>
-
+        <link rel="stylesheet" href="./assets/app.css"/>
+        <link rel="stylesheet" href="./bower_components/vanilla-player/vanilla.css"/>
     </head>
 
     <body ng-app="mbApp" layout="row" ng-controller="AppController as appCtrl" ng-cloak >
@@ -43,7 +43,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         </md-sidenav>
 
-
     <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
         <md-toolbar layout="row" class="md-whiteframe-z1">
@@ -56,19 +55,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <!--<h1>Music Box</h1>-->
         </md-toolbar>
 
-        <md-content flex ui-view class="content">
-            
-<!--            <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-            <h2>{{ul.selected.name}}</h2>
-            <p>{{ul.selected.content}}</p>
-
-            <md-button class="contact" md-no-ink ng-click="ul.showContactOptions($event)" aria-label="Contact User">
-                <md-tooltip>Contact {{ ul.selected.name}}</md-tooltip>
-                <md-icon md-svg-icon="share"></md-icon>
-            </md-button>-->
-        </md-content>
-
+        <md-content flex ui-view class="content"></md-content>
+        
+        <vanilla-player class="md-primary"></vanilla-player>
     </div>
+    
+    <script type="text/javascript" src="./bower_components/vanilla-player/Vanilla.js"></script>
 
     <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="./bower_components/angular-animate/angular-animate.js"></script>
@@ -78,6 +70,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <script type="text/javascript" src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     
     <script type="text/javascript" src="./src/sideMenu/side-menu.js"></script>
+    <script type="text/javascript" src="./src/vanillaPlayer/vanilla-player.js"></script>
     
     <script type="text/javascript" src="./src/library/library.js"></script>
     <script type="text/javascript" src="./src/artist/artist.js"></script>
