@@ -35,27 +35,27 @@
      */
     function AlbumController($log, $http, $filter, $state, $stateParams) {
         var self = this;
+        
+        self.name = $stateParams.albumName;
+        self.tracksAlbum = [];
 
-        self.albumsSameArtist = [];
-
-        self.getAlbumsSameArtist = getAlbumsSameArtist;
-        self.artistDetails = artistDetails;
+        self.getTracksAlbum = getTracksAlbum;
+        self.play = play;
         
         (function init() {
-            if (self.albumsSameArtist.length === 0) {
-                self.getAlbumsSameArtist();
+            if (self.getTracksAlbum.length === 0) {
+                self.getTracksAlbum();
             }
         })();
 
-        function getAlbumsSameArtist() {
-            $http.get('artist').success(function (artists) {
-                self.artists = artists;
+        function getTracksAlbum() {
+            $http.get('track/' + self.name).success(function (tracks) {
+                self.tracksAlbum = tracks.data;
             });
         }
-
-        function artistDetails(artist) {
-            console.log(artist.name);
-            $state.go('artist');
+        
+        function play (track) {
+            Vanilla.instances.mbPlayer.setSource(track.path);
         }
 
     }

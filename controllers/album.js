@@ -38,6 +38,24 @@ exports.getAlbumsByArtist = function (req, res) {
     });
 };
 
+exports.getByName = function (name) {
+    var deferred = q.defer();
+    models.Album.find({
+        where: {
+            name: name
+        }
+    }).then(function (album) {
+        if (album != null) {
+            deferred.resolve(album);
+        } else {
+            deferred.reject("not found");
+        }
+    }).catch(function (err) {
+        deferred.reject(err);
+    });
+    return deferred.promise;
+};
+
 exports.getByPath = function (path) {
     var deferred = q.defer();
     models.Album.find({
