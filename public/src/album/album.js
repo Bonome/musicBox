@@ -56,6 +56,7 @@
         
         function play (track) {
             Vanilla.instances.mbPlayer.setSource(track.path);
+            Vanilla.instances.mbPlayer.play();
         }
 
     }
