@@ -50,7 +50,7 @@ exports.create = function (artist) {
 //  models.Artist.findOrCreate({
     models.Artist.create({
         name: artist.name,
-        name_ref: artist.name.replace(/[^A-Z0-9]/ig, "_"),
+        name_ref: artist.name.replace(/[^A-Z0-9]+/ig, "_"),
         biography: artist.biography,
         nationality: artist.nationality,
         label: artist.label,
@@ -120,7 +120,7 @@ exports.update = function (artist) {
     var deferred = q.defer();
     models.Artist.update({
         name: artist.name,
-        name_ref: artist.name.replace(/[^A-Z0-9]/ig, "_"),
+        name_ref: artist.name.replace(/[^A-Z0-9]+/ig, "_"),
         biography: artist.biography,
         nationality: artist.nationality,
         label: artist.label,
