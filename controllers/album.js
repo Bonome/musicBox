@@ -19,7 +19,7 @@ exports.getAlbumsByArtist = function (req, res) {
                 model: models.Artist,
                 required: true,
                 where: {
-                    name: req.params.artistName
+                    name_ref: req.params.artistName
                 },
                 attributes: []
             }

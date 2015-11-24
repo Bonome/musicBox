@@ -21,7 +21,7 @@ exports.listAlbumArtists = function (req, res) {
                 attributes: ['id']
             }
         ],
-        attributes: ['name', 'path_picture']
+        attributes: ['name', 'name_ref', 'path_picture']
     }).then(function (artists) {
         res.json(artists);
     });
@@ -31,7 +31,7 @@ exports.getByName = function (name) {
     var deferred = q.defer();
     models.Artist.find({
         where: {
-            name: name
+            name_ref: name
         }
     }).then(function (artist) {
         if (artist != null) {
@@ -50,6 +50,7 @@ exports.create = function (artist) {
 //  models.Artist.findOrCreate({
     models.Artist.create({
         name: artist.name,
+        name_ref: artist.name.replace(/[^A-Z0-9]/ig, "_"),
         biography: artist.biography,
         nationality: artist.nationality,
         label: artist.label,
@@ -119,6 +120,7 @@ exports.update = function (artist) {
     var deferred = q.defer();
     models.Artist.update({
         name: artist.name,
+        name_ref: artist.name.replace(/[^A-Z0-9]/ig, "_"),
         biography: artist.biography,
         nationality: artist.nationality,
         label: artist.label,

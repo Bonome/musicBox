@@ -12,6 +12,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             unique: true
         },
+        name_ref: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
         biography: {
             type: DataTypes.TEXT
         },
