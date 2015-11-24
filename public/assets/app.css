@@ -84,9 +84,9 @@ md-card {
 }
 
 md-card.artist {
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-top: 6%;
+    padding-left: 6%;
+    padding-right: 6%;
     max-width: 94%;
 }
 
