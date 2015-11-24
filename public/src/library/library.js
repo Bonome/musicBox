@@ -71,7 +71,7 @@
 
         function artistDetails(artist) {
 //            console.log(artist.name);
-            $state.go('artist', {artistName: artist.name});
+            $state.go('artist', {artistName: artist.name_ref});
         }
 
     }

@@ -36,7 +36,8 @@
     function ArtistController($log, $http, $filter, $state, $stateParams) {
         var self = this;
 
-        self.name = $stateParams.artistName;
+        self.name = "";
+        self.name_ref = $stateParams.artistName;
         self.picture = "../assets/svg/avatar.png";
         self.biography = "";
         self.albums = [];
@@ -51,13 +52,16 @@
         })();
 
         function getAlbumByArtist() {
-            $http.get('album/' + self.name).success(function (albums) {
+            $http.get('album/' + self.name_ref).success(function (albums) {
                 self.albums = albums.data;
                 if (albums.meta != null && albums.meta.artist != null && albums.meta.artist.path_picture != null) {
                     self.picture = albums.meta.artist.path_picture;
                 }
                 if (albums.meta != null && albums.meta.artist != null && albums.meta.artist.biography != null) {
                     self.biography = albums.meta.artist.biography;
+                }
+                if (albums.meta != null && albums.meta.artist != null && albums.meta.artist.name != null) {
+                    self.name = albums.meta.artist.name;
                 }
             });
         }
