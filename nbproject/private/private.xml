@@ -3,38 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/bonome/Workspace/mb/public/src/settings/view/settings.html</file>
-            <file>file:/home/bonome/Workspace/mb/package.json</file>
-            <file>file:/home/bonome/Workspace/mb/routes/artist.js</file>
-            <file>file:/home/bonome/Workspace/mb/bin/www</file>
-            <file>file:/home/bonome/Workspace/mb/app.js</file>
-            <file>file:/home/bonome/Workspace/mb/public/src/artist/artist.js</file>
-            <file>file:/home/bonome/Workspace/mb/public/config.js</file>
-            <file>file:/home/bonome/Workspace/mb/controllers/artist.js</file>
-            <file>file:/home/bonome/Workspace/mb/bower.json</file>
-            <file>file:/home/bonome/Workspace/mb/public/src/artist/view/artist.html</file>
-            <file>file:/home/bonome/Workspace/mb/public/app.js</file>
-            <file>file:/home/bonome/Workspace/mb/controllers/scan_folders.js</file>
-            <file>file:/home/bonome/Workspace/mb/public/src/library/library.js</file>
-            <file>file:/home/bonome/Workspace/mb/controllers/process_files.js</file>
-            <file>file:/home/bonome/Workspace/mb/config/config.json</file>
-            <file>file:/home/bonome/Workspace/mb/models/track.js</file>
-            <file>file:/home/bonome/Workspace/mb/routes/album.js</file>
-            <file>file:/home/bonome/Workspace/mb/public/src/album/view/album.html</file>
-            <file>file:/home/bonome/Workspace/mb/models/album.js</file>
-            <file>file:/home/bonome/Workspace/mb/public/src/sideMenu/view/side-menu.html</file>
-            <file>file:/home/bonome/Workspace/mb/public/index.html</file>
-            <file>file:/home/bonome/Workspace/mb/controllers/lfm.js</file>
-            <file>file:/home/bonome/Workspace/mb/controllers/track.js</file>
-            <file>file:/home/bonome/Workspace/mb/public/src/album/album.js</file>
-            <file>file:/home/bonome/Workspace/mb/public/bower_components/vanilla-player/Vanilla.js</file>
-            <file>file:/home/bonome/Workspace/mb/config/config.sample.json</file>
-            <file>file:/home/bonome/Workspace/mb/controllers/album.js</file>
+            <file>file:/home/bonome/Workspace/musicBox/config/config.sample.json</file>
+            <file>file:/home/bonome/Workspace/musicBox/gulpfile.js</file>
             <file>file:/home/bonome/Workspace/mb/controllers/utils.js</file>
             <file>file:/home/bonome/Workspace/mb/public/src/sideMenu/side-menu.js</file>
             <file>file:/home/bonome/Workspace/mb/public/assets/app.css</file>
             <file>file:/home/bonome/Workspace/mb/models/artist.js</file>
             <file>file:/home/bonome/Workspace/mb/public/src/library/view/library.html</file>
+
         </group>
     </open-files>
 </project-private>

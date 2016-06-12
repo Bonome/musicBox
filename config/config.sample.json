@@ -1,20 +1,23 @@
 {
-  "musicPath": "/home/user/Musique",
-  "thumbnailSize": 400,
-  "development": {
-    "username": "userdb",
-    "password": "mdpdb",
-    "database": "musicboxdevdb",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "port": "3306"
-  },
-  "production": {
-    "username": "userdb",
-    "password": "mdpdb",
-    "database": "musicboxproddb",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "port": "3306"
-  }
+    "musicPath": "/home/user/Musique",
+    "thumbnailSize": 400,
+    "development": {
+        "username": "userdb",
+        "password": "mdpdb",
+        "database": "musicboxdevdb",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "dialectOptions": {
+            "unixSocket": "/var/run/mysqld/mysqld.sock"
+        },
+        "port": "3306"
+    },
+    "production": {
+        "username": "userdb",
+        "password": "mdpdb",
+        "database": "musicboxproddb",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "port": "3306"
+    }
 }

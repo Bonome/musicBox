@@ -9,15 +9,13 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "angular": "~1.4.8",
-    "angular-aria": "~1.4.8",
-    "Angular-Hero-ramjet": "angular-hero-ramjet#~0.1.2",
-    "angular-material-icons": "~0.6.0",
+    "angular": "~1.5.7",
+    "angular-animate": "~1.5.7",
+    "angular-aria": "~1.5.7",
+    "angular-material": "~1.1.0-rc4-master-f0e6de9",
+    "angular-messages": "~1.5.7",
+    "angular-material-icons": "~0.7.0",
     "angular-ui-router": "ui-router#~0.2.15",
-    "material-design-icons": "~2.0.0",
-    "vanilla-player": "https://github.com/marc-plaza/vanillaplayer.git#develop"
-  },
-  "devDependencies": {
-    "angular-material": "https://github.com/angular/bower-material.git#master"
+    "material-design-icons": "~2.2.3"
   }
 }
