@@ -1,7 +1,7 @@
 "use strict";
 
 var config = require(__dirname + '/../config/config.json');
-var fs = require('fs');
+var fs = require('graceful-fs');
 var path = require('path');
 
 var process = require('./process_files');

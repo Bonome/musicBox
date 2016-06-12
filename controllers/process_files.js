@@ -1,6 +1,6 @@
 "use strict";
 
-var fs = require('fs');
+var fs = require('graceful-fs');
 var mm = require('musicmetadata');
 
 var artistController = require('../controllers/artist');
