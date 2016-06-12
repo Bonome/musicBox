@@ -30,7 +30,7 @@ exports.parseDirOfFiles = function (listOfFiles, done) {
             done(null, results);
         }
         if (results.path_ref === '') {
-            results.path_ref = file.substring(0, file.lastIndexOf('/')+1);
+            results.path_ref = file.substring(0, file.lastIndexOf('/') + 1);
         }
         mm(fs.createReadStream(file), {duration: true}, function (err, metadata) {
             if (!err) {
@@ -93,6 +93,8 @@ exports.parseDirOfFiles = function (listOfFiles, done) {
                     if (results.tracks.length > 0) {
                         self.saveDirOfFiles(results);
                     }
+                }else{
+                    console.log('ERR during reading : ' + file);
                 }
             }
         });
@@ -125,6 +127,8 @@ exports.saveDirOfFiles = function (blobInfos) {
                             trackController.save(track).then(function (trackSaved) {
                                 trackSaved.setArtists(albumArtistSaved);
                                 trackSaved.setAlbums(albumSaved);
+                            }).catch(function (err) {
+                                console.log('ERR during saving track : ' + track.name);
                             });
                         }
                     });
@@ -137,13 +141,21 @@ exports.saveDirOfFiles = function (blobInfos) {
                                 trackController.save(track).then(function (trackSaved) {
                                     trackSaved.setArtists(trackArtistSaved);
                                     trackSaved.setAlbums(albumSaved);
+                                }).catch(function (err) {
+                                    console.log('ERR during saving track : ' + track.name);
                                 });
                             }
                         });
+                    }).catch(function (err) {
+                        console.log('ERR during saving artist : ' + tArtist);
                     });
                 }
             });
+        }).catch(function (err) {
+            console.log('ERR during saving album : ' + blobInfos.album.name);
         });
+    }).catch(function (err) {
+        console.log('ERR during saving album artist : ' + blobInfos.album_artist.name);
     });
 };
 

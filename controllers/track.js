@@ -94,6 +94,7 @@ exports.create = function (track) {
 //    last_read_at: track.last_read_at
     }).then(function (track) {
         deferred.resolve(track);
+        console.log(track.name + ' saved.');
     }).catch(function (error) {
         if (error.name === "SequelizeUniqueConstraintError") {
             self.getByPath(track.path).then(function (trackdb) {

@@ -24,27 +24,36 @@ exports.scan = function (req, res) {
             list.forEach(function (file) {
                 file = path.resolve(dir, file);
                 fs.stat(file, function (err, stat) {
-                    if (stat && stat.isDirectory()) {
-                        walk(file, function (err, res) {
-                            console.log("DIR LIST : " + res);
-                            process.parseDirOfFiles(res, function (err, filesWithMetadata) {
-                                if (err) {
-                                    throw err;
-                                }
-                                console.log(filesWithMetadata);
+                    if (!err) {
+                        if (stat && stat.isDirectory()) {
+                            walk(file, function (err, res) {
+                                if (!err) {
+//                            console.log("DIR LIST : " + res);
+                                    process.parseDirOfFiles(res, function (err, filesWithMetadata) {
+                                        if (err) {
+                                            console.log('ERR during parse : ' + res);
+                                            throw err;
+                                        }
+                                        console.log(filesWithMetadata);
 //                                BOUCLE et enregistrement d'1 artist d'album, d'1 album et d'autant track et de trackArtist que de morceaux
-                            });
+                                    });
 //                            results = results.concat(res);
+                                    if (!--pending) {
+                                        done(null, results);
+                                    }
+                                } else {
+                                    console.log('ERR during list : ' + file);
+                                }
+                            });
+                        } else {
+//                        process.parseFile(file);
+                            results.push(file);
                             if (!--pending) {
                                 done(null, results);
                             }
-                        });
-                    } else {
-//                        process.parseFile(file);
-                        results.push(file);
-                        if (!--pending) {
-                            done(null, results);
                         }
+                    }else{
+                        console.log('ERR during reading : ' + file);
                     }
                 });
             });
@@ -55,7 +64,7 @@ exports.scan = function (req, res) {
         if (err) {
             throw err;
         }
-        
+
     });
     res.json(true);
 };
