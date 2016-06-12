@@ -1,0 +1,12 @@
+{
+  "apps" : [
+	{
+		"name"	      : "musicBox",
+    		"script"      : "bin/www",
+    		"watch"       : false,
+		"exec_mode"   : "cluster",
+		"instances"   : 4,
+		"combine_logs": true
+  	}
+  ]
+}
