@@ -9,11 +9,11 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "angular": "~1.5.6",
-    "angular-animate": "~1.5.6",
-    "angular-aria": "~1.5.6",
+    "angular": "~1.5.7",
+    "angular-animate": "~1.5.7",
+    "angular-aria": "~1.5.7",
     "angular-material": "~1.1.0-rc4-master-f0e6de9",
-    "angular-messages": "~1.5.6",
+    "angular-messages": "~1.5.7",
     "angular-material-icons": "~0.7.0",
     "angular-ui-router": "ui-router#~0.2.15",
     "material-design-icons": "~2.2.3"
