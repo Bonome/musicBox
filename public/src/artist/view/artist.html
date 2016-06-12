@@ -15,4 +15,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<h1></h1>
+<!--<h2>{{artist.name}}</h2>-->
+<md-grid-list md-cols-sm="2" md-cols-md="4" md-cols-lg="6" md-cols-gt-lg="8" md-row-height="4:5"  class="albums">
+    <md-grid-tile md-colspan="2" md-rowspan="2">
+        <md-card class="artist">
+            <img ng-src="{{artist.picture && './data/' + artist.picture|| './assets/svg/avatar.png'}}" class="md-card-image artists" alt="Artist overview"/>
+            <md-card-content>
+                <h3>{{artist.name}}</h3>
+            </md-card-content>
+        </md-card>
+    </md-grid-tile>
+    <md-grid-tile md-colspan="2" md-colspan-lg="4" md-colspan-gt-lg="6" md-rowspan="2" class="biography">
+        <div>{{artist.biography}}</div>
+    </md-grid-tile>
+    <md-grid-tile md-colspan="1" ng-repeat="album in artist.albums">
+        <md-card ng-click="artist.albumDetails(album)">
+            <img ng-src="{{album.path_picture && './data/' + album.path_picture|| './assets/svg/crepe.png'}}" class="md-card-image albums" alt="Artist overview"/>
+            <md-card-content>
+                <span>{{album.name}}</span>
+            </md-card-content>
+        </md-card>
+    </md-grid-tile>
+</md-grid-list>

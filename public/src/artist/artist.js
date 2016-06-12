@@ -20,29 +20,56 @@
     angular
             .module('artist', [])
             .controller('ArtistController', [
-        '$log','$http',
-        ArtistController
-    ]);
+                '$log', '$http', '$filter', '$state', '$stateParams',
+                ArtistController
+            ]);
 
     /**
      * Main Controller for the Angular Material Starter App
      * @param $log
      * @param $http
+     * @param $filter
+     * @param $state
+     * @param $stateParams
      * @constructor
      */
-    function ArtistController($log, $http) {
+    function ArtistController($log, $http, $filter, $state, $stateParams) {
         var self = this;
-        
-        self.scan = scanFiles;
 
-        (function init(){
-            
+        self.name = "";
+        self.name_ref = $stateParams.artistName;
+        self.picture = "../assets/svg/avatar.png";
+        self.biography = "";
+        self.albums = [];
+
+        self.getAlbums = getAlbumByArtist;
+        self.albumDetails = albumDetails;
+
+        (function init() {
+            if (self.albums.length === 0) {
+                self.getAlbums();
+            }
         })();
-        
-        function scanFiles () {
-            $http.get('scan');
+
+        function getAlbumByArtist() {
+            $http.get('album/' + self.name_ref).success(function (albums) {
+                self.albums = albums.data;
+                if (albums.meta != null && albums.meta.artist != null && albums.meta.artist.path_picture != null) {
+                    self.picture = albums.meta.artist.path_picture;
+                }
+                if (albums.meta != null && albums.meta.artist != null && albums.meta.artist.biography != null) {
+                    self.biography = albums.meta.artist.biography;
+                }
+                if (albums.meta != null && albums.meta.artist != null && albums.meta.artist.name != null) {
+                    self.name = albums.meta.artist.name;
+                }
+            });
         }
-        
+
+        function albumDetails(album) {
+            $state.go('album', {artistName: self.name, albumName: album.name});
+        }
+
     }
 
 })();

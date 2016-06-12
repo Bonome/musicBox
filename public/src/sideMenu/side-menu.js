@@ -7,7 +7,7 @@
             templateUrl: './src/sideMenu/view/side-menu.html',
             controller: function () {
                 var self = this;
-                self.iconColor = '#FF5722';
+//                self.iconColor = '#E8E9E9';
                 self.selected = 'library';
                 
                 self.selectItem = selectMenuItem;
@@ -20,7 +20,6 @@
                  function selectMenuItem(item) {
                     self.selected = item;
                     $state.go(item);
-                    console.log(item);
                     self.toggleList();
                 };
 

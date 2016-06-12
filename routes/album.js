@@ -1,10 +1,12 @@
 "use strict";
 
 var express = require('express');
-var router = express.Router();
+var router = express.Router({mergeParams: true});
 var controller = require('../controllers/album');
 
 router.get('/', controller.list);
+
+router.get('/:artistName', controller.getAlbumsByArtist);
 
 router.post('/', controller.create);
 

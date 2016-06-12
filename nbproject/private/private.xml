@@ -5,8 +5,12 @@
         <group>
             <file>file:/home/bonome/Workspace/musicBox/config/config.sample.json</file>
             <file>file:/home/bonome/Workspace/musicBox/gulpfile.js</file>
-            <file>file:/home/bonome/Workspace/musicBox/config/config.json</file>
-            <file>file:/home/bonome/Workspace/musicBox/bower.json</file>
+            <file>file:/home/bonome/Workspace/mb/controllers/utils.js</file>
+            <file>file:/home/bonome/Workspace/mb/public/src/sideMenu/side-menu.js</file>
+            <file>file:/home/bonome/Workspace/mb/public/assets/app.css</file>
+            <file>file:/home/bonome/Workspace/mb/models/artist.js</file>
+            <file>file:/home/bonome/Workspace/mb/public/src/library/view/library.html</file>
+
         </group>
     </open-files>
 </project-private>

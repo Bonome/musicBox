@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var controller = require('../controllers/artist');
 
-router.get('/', controller.list);
+router.get('/', controller.listAlbumArtists);
 
 router.post('/', controller.saveFromRest);
 

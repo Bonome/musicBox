@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<!--
+Copyright (C) 2015 bonome
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
 <html lang="en" >
     <head>
         <title>Music Box</title>
@@ -10,8 +26,8 @@
 
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
         <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
-        <link rel="stylesheet" href="assets/app.css"/>
-
+        <link rel="stylesheet" href="./assets/app.css"/>
+        <link rel="stylesheet" href="./bower_components/vanilla-player/vanilla.css"/>
     </head>
 
     <body ng-app="mbApp" layout="row" ng-controller="AppController as appCtrl" ng-cloak >
@@ -20,36 +36,31 @@
                     md-component-id="left"
                     md-is-open="false">
             <md-toolbar class="md-whiteframe-z1">
-                <h1>Music Box</h1>
+                <h2>Music Box</h2>
             </md-toolbar>
 
             <side-menu></side-menu>
 
         </md-sidenav>
 
-
     <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
         <md-toolbar layout="row" class="md-whiteframe-z1">
-            <md-button class="menu" ng-click="appCtrl.toggleList()" aria-label="Navigation menu0">
+            <md-button ng-click="appCtrl.goBack()" aria-label="previous state" class="menu previous">
+                <md-icon md-svg-icon="previous"></md-icon>
+            </md-button>
+            <md-button class="menu" ng-click="appCtrl.toggleList()" aria-label="Navigation main menu">
                 <md-icon md-svg-icon="menu" ></md-icon>
             </md-button> 
             <!--<h1>Music Box</h1>-->
         </md-toolbar>
 
-        <md-content flex ui-view class="content">
-            
-<!--            <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-            <h2>{{ul.selected.name}}</h2>
-            <p>{{ul.selected.content}}</p>
-
-            <md-button class="contact" md-no-ink ng-click="ul.showContactOptions($event)" aria-label="Contact User">
-                <md-tooltip>Contact {{ ul.selected.name}}</md-tooltip>
-                <md-icon md-svg-icon="share"></md-icon>
-            </md-button>-->
-        </md-content>
-
+        <md-content flex ui-view class="content"></md-content>
+        
+        <vanilla-player class="md-primary"></vanilla-player>
     </div>
+    
+    <script type="text/javascript" src="./bower_components/vanilla-player/Vanilla.js"></script>
 
     <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="./bower_components/angular-animate/angular-animate.js"></script>
@@ -59,9 +70,11 @@
     <script type="text/javascript" src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     
     <script type="text/javascript" src="./src/sideMenu/side-menu.js"></script>
+    <script type="text/javascript" src="./src/vanillaPlayer/vanilla-player.js"></script>
     
     <script type="text/javascript" src="./src/library/library.js"></script>
     <script type="text/javascript" src="./src/artist/artist.js"></script>
+    <script type="text/javascript" src="./src/album/album.js"></script>
     
     <script type="text/javascript" src="./src/settings/settings.js"></script>
     

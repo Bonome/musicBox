@@ -1,5 +1,6 @@
 {
     "musicPath": "/home/user/Musique",
+    "thumbnailSize": 400,
     "development": {
         "username": "userdb",
         "password": "mdpdb",

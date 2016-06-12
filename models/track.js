@@ -9,8 +9,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
+      allowNull: false
+//      unique: true
     },
     released: {
       type: DataTypes.STRING
@@ -42,6 +42,9 @@ module.exports = function (sequelize, DataTypes) {
     },
     last_read_at: {
       type: DataTypes.DATE
+    },
+    error: {
+        type: DataTypes.STRING
     }
   }, {
     underscored: true,

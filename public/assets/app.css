@@ -12,8 +12,9 @@ html, body {
     background-color: transparent;
     border: none;
     height: 38px;
-    margin: 16px;
+    margin: 13px 4px;
     width: 36px;
+    min-width: 72px;
 }
 
 md-toolbar h1 {
@@ -40,98 +41,13 @@ md-sidenav  md-list {
 /* Primary content area */
 
 .content {
-    overflow: hidden;
+    overflow: auto;
 }
 
 .content  {
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 5px;
-}
-
-.content .md-button.contact {
-    background-color: transparent;
-    border: none;
-    width: 48px;
-    height: 48px;
-    margin: 8px auto 16px 0;
-    position: absolute;
-    top: 10px;
-    right: 40px;
-}
-
-.content md-icon.avatar {
-    margin-top: 10px;
-}
-
-.content .md-button.contact > md-icon {
-    fill:black;
-    width:36px;
-    height:36px;
-}
-
-md-button.menuBtn > md-icon {
-    fill:white;
-    width:24px;
-    height:24px;
-}
-
-.content .md-button.contact:active > md-icon {
-    background-color: #dadada;
-    border-radius: 75%;
-    padding:4px;
-    transition: all 100ms ease-out 30ms;
-}
-
-.content img {
-    display: block;
-    height: auto;
-    max-width: 500px;
-    /* border-top-left-radius: 3px; */
-    /* border-top-right-radius: 3px; */
-    /* border-bottom-left-radius: 50px; */
-    /* border-bottom-right-radius: 25px; */
-    /* padding: 5px; */
-}
-
-/* Utils */
-
-.content-wrapper {
-    position: relative;
-}
-
-/* Typography support coming in 0.8.0 */
-
-md-toolbar h1 {
-    font-size: 1.250em;
-    font-weight: 400;
-}
-
-.avatar {
-    position: relative;
-    width: 128px;
-    height: 128px;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    display: inline-block;
-    overflow: hidden;
-    margin: 0px;
-    vertical-align: middle;
-    zoom:0.70;
-    transform: translateZ(0);
-    -webkit-transform: scale(0.70);
-    -moz-transform:scale(0.70);
-}
-
-
-md-bottom-sheet  md-icon {
-    margin-right:20px;
-}
-
-span.name {
-    font-weight: bold;
-    font-size:1.1em;
-    padding-left:5px;
 }
 
 /**
@@ -142,19 +58,63 @@ span.name {
 }
 
 .content span {
-    width: 184px;
+    display: block;
+    height: 16px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    }
+
+md-card md-card-content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+h2 {
+    margin: auto 17px;
 }
 
 md-card {
-    /* border-top-left-radius: 3px; */
-    /* border-top-right-radius: 3px; */
-    /* border-bottom-left-radius: 3px; */
-    /* border-bottom-right-radius: 25px; */
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+    max-width: 87%;
+    margin: 0;
+    background-color: #FFF;
+    cursor: pointer;
 }
 
-md-card md-card-content {
-    padding: 16px 0 16px;
+md-card.artist {
+    padding-top: 6%;
+    padding-left: 6%;
+    padding-right: 6%;
+    max-width: 94%;
+}
+
+.content .albums span {
+padding-left: 5%;width: 95%;}
+
+.previous {
+    min-width: 36px;
+    width: 36px;
+}
+
+.previous md-icon {
+    height: 36px;
+    width: 36px;
+    margin-left: -7px;
+}
+
+md-grid-tile.biography {
+    overflow: auto;
+    /* padding: 20px; */
+}
+
+vanilla-player .player.audio {
+    width: calc(100% - 30px);
+    background-color: rgb(79,83,86);
+}
+
+vanilla-player .timeBarContainer {
+    background-color: rgb(55,55,55);
+    width: calc(100% - 330px);
 }
