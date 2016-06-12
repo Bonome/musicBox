@@ -1,25 +1,14 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*
+ * gulpfile.js
+ * ===========
+ * Rather than manage one giant configuration file responsible
+ * for creating multiple tasks, each task has been broken out into
+ * its own file in gulp/tasks. Any file in that folder gets automatically
+ * required by the loop in ./gulp/index.js (required below).
+ *
+ * To add a new task, simply add a new task file to gulp/tasks.
  */
 
-var gulp = require('gulp');
+global.isProd = false;
 
-gulp.task('default', function () {
-    // place code for your default task here
-});
-
-// Gulp task for creating template cache
-gulp.task('templatecache', function() {
-    log('Creating an AngularJS $templateCache');
-
-    return gulp
-        .src(config.htmltemplates)
-        .pipe($.minifyHtml({empty: true}))
-        .pipe($.angularTemplatecache(
-            config.templateCache.file,
-            config.templateCache.options
-        ))
-        .pipe(gulp.dest(config.temp));
-});
+require('./gulp');

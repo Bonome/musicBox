@@ -16,6 +16,8 @@
     "angular-messages": "~1.5.7",
     "angular-material-icons": "~0.7.0",
     "angular-ui-router": "ui-router#~0.2.15",
-    "material-design-icons": "~2.2.3"
+    "material-design-icons": "~2.2.3",
+    "angular-sanitize": "^1.5.7",
+    "vanillaplayer": "https://github.com/marc-plaza/vanillaplayer.git"
   }
 }

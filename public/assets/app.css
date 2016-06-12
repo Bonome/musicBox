@@ -118,3 +118,8 @@ vanilla-player .timeBarContainer {
     background-color: rgb(55,55,55);
     width: calc(100% - 330px);
 }
+
+/*artist view*/
+.albums .biography div{
+    white-space: pre-wrap;
+}

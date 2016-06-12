@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </md-card>
     </md-grid-tile>
     <md-grid-tile md-colspan="2" md-colspan-lg="4" md-colspan-gt-lg="6" md-rowspan="2" class="biography">
-        <div>{{artist.biography}}</div>
+        <div ng-bind-html="artist.biography"></div>
     </md-grid-tile>
     <md-grid-tile md-colspan="1" ng-repeat="album in artist.albums">
         <md-card ng-click="artist.albumDetails(album)">

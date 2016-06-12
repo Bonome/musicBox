@@ -15,7 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 (function () {
-    var app = angular.module('mbApp', ['ngMaterial', 'ngMdIcons', 'ui.router', 'sideMenu', 'vanillaPlayer', 'library', 'settings', 'artist', 'album'])
+    var app = angular.module('mbApp', 
+    ['ngMaterial', 'ngMdIcons', 'ui.router', 'sideMenu', 'vanillaPlayer', 'library', 'settings', 'artist', 'album', 'ngSanitize'])
             .config(function ($mdThemingProvider, $mdIconProvider, $stateProvider, $urlRouterProvider) {
 
                 $urlRouterProvider.otherwise('/library/artists');
