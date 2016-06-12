@@ -15,9 +15,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<md-grid-list md-cols-sm="2" md-cols-md="4" md-cols-lg="6" md-cols-gt-lg="8" md-row-height="4:5" class="artists">
+<md-grid-list md-cols-sm="2" md-cols-md="4" md-cols-lg="6" md-cols-gt-lg="8" md-row-height="4:5" ui-view class="artists page-transition hero-ramjet-transition">
     <md-grid-tile md-colspan="1" ng-repeat="artist in lib.artists">
-        <md-card ng-click="lib.artistDetails(artist)" class="artist">
+        <md-card ng-click="lib.artistDetails(artist)" class="artist {{artist.name_ref}} hero-ramjet" hero-id="{{artist.name_ref}}">
             <img ng-src="{{artist.path_picture && './data/'+artist.path_picture || './assets/svg/avatar.png'}}" class="md-card-image" alt="Artist overview">
             <md-card-content>
                 <span>{{artist.name}}</span>
