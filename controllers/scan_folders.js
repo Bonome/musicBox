@@ -55,6 +55,7 @@ exports.scan = function (req, res) {
         if (err) {
             throw err;
         }
-        res.json(true);
+        
     });
+    res.json(true);
 };
