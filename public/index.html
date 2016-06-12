@@ -32,16 +32,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <body ng-app="mbApp" layout="row" ng-controller="AppController as appCtrl" ng-cloak >
 
-        <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
-                    md-component-id="left"
-                    md-is-open="false">
-            <md-toolbar class="md-whiteframe-z1">
-                <h2>Music Box</h2>
-            </md-toolbar>
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-open="false">
+        <md-toolbar class="md-whiteframe-z1">
+            <h2>Music Box</h2>
+        </md-toolbar>
 
-            <side-menu></side-menu>
+        <side-menu></side-menu>
 
-        </md-sidenav>
+    </md-sidenav>
 
     <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
@@ -52,14 +52,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <md-button class="menu" ng-click="appCtrl.toggleList()" aria-label="Navigation main menu">
                 <md-icon md-svg-icon="menu" ></md-icon>
             </md-button> 
+            <md-button ng-click="appCtrl.selectItem('library')">
+                <!--<ng-md-icon icon="my_library_music"></ng-md-icon>--> 
+                Library
+            </md-button>
             <!--<h1>Music Box</h1>-->
         </md-toolbar>
 
         <md-content flex ui-view class="content"></md-content>
-        
+
         <vanilla-player class="md-primary"></vanilla-player>
     </div>
-    
+
     <script type="text/javascript" src="./bower_components/vanillaplayer/Vanilla.js"></script>
 
     <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
@@ -70,16 +74,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <script type="text/javascript" src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!--<script type="text/javascript" src="./bower_components/Angular-Hero-ramjet/angular-hero-ramjet.js"></script>-->
     <script type="text/javascript" src="./bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    
+
     <script type="text/javascript" src="./src/sideMenu/side-menu.js"></script>
     <script type="text/javascript" src="./src/vanillaPlayer/vanilla-player.js"></script>
-    
+
     <script type="text/javascript" src="./src/library/library.js"></script>
     <script type="text/javascript" src="./src/artist/artist.js"></script>
     <script type="text/javascript" src="./src/album/album.js"></script>
-    
+
     <script type="text/javascript" src="./src/settings/settings.js"></script>
-    
+
     <script type="text/javascript" src="./src/users/Users.js"></script>
     <script type="text/javascript" src="./src/users/UserController.js"></script>
     <script type="text/javascript" src="./src/users/UserService.js"></script>
