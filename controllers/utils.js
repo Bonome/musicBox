@@ -1,6 +1,6 @@
 "use strict";
 
-var fs = require('fs');
+var fs = require('graceful-fs');
 var easyimg = require('easyimage');
 
 var config = require(__dirname + '/../config/config.json');

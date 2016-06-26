@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 (function () {
-    var app = angular.module('mbApp', 
-    ['ngMaterial', 'ngMdIcons', 'ui.router', 'sideMenu', 'vanillaPlayer', 'library', 'settings', 'artist', 'album', 'ngSanitize'])
+    var app = angular.module('mbApp',
+            ['ngMaterial', 'ngMdIcons', 'ui.router', 'sideMenu', 'vanillaPlayer', 'library', 'settings', 'artist', 'album', 'ngSanitize'])
             .config(function ($mdThemingProvider, $mdIconProvider, $stateProvider, $urlRouterProvider) {
 
                 $urlRouterProvider.otherwise('/library/artists');
@@ -135,7 +135,7 @@
                         .accentPalette('customAccent')
                         .warnPalette('customWarn');
 
-            }).controller('AppController', ['$mdSidenav', '$log', '$window', AppController]);
+            }).controller('AppController', ['$mdSidenav', '$state', '$window', AppController]);
 
     /**
      * Main Controller for the Angular Material Starter App
@@ -144,24 +144,29 @@
      * @param $window
      * @constructor
      */
-    function AppController($mdSidenav, $log, $window) {
+    function AppController($mdSidenav, $state, $window) {
         var self = this;
 
         self.toggleList = toggleUsersList;
         self.goBack = goBack;
-        
+        self.selectItem = selectItem;
+
         /**
          * hide or Show the 'left' sideNav area
          */
         function toggleUsersList() {
             $mdSidenav('left').toggle();
         }
-        
+
         /**
          * go back to previous "page"
          */
         function goBack() {
             $window.history.back();
+        }
+
+        function selectItem(item) {
+            $state.go(item);
         }
     }
 })();
